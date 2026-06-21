@@ -39,4 +39,11 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-.target
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### Other ###
+*.cer
+*.env
+docs/

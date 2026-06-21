@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: electronic-shop
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  ai:
+    gigachat:
+      auth:
+        bearer:
+          api-key: ${GIGACHAT_API_KEY}
+        scope: ${GIGACHAT_SCOPE:GIGACHAT_API_PERS}
+        certs:
+          ca-certs: ${GIGACHAT_CA_BUNDLE_PATH}
+      chat:
+        options:
+          model: GigaChat
+
+server:
+  port: 8080
