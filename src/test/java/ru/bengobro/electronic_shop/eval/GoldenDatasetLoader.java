@@ -16,15 +16,19 @@ public final class GoldenDatasetLoader {
     }
 
     public static List<GoldenCase> load() {
+        return load(RESOURCE);
+    }
+
+    public static List<GoldenCase> load(String resource) {
         ObjectMapper mapper = new ObjectMapper();
-        try (InputStream in = GoldenDatasetLoader.class.getResourceAsStream(RESOURCE)) {
+        try (InputStream in = GoldenDatasetLoader.class.getResourceAsStream(resource)) {
             if (in == null) {
-                throw new IllegalStateException("Resource not found: " + RESOURCE);
+                throw new IllegalStateException("Resource not found: " + resource);
             }
             return mapper.readValue(in, new TypeReference<List<GoldenCase>>() {
             });
         } catch (IOException e) {
-            throw new UncheckedIOException("Failed to read " + RESOURCE, e);
+            throw new UncheckedIOException("Failed to read " + resource, e);
         }
     }
 }

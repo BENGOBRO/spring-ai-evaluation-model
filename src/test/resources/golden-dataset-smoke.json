@@ -1,0 +1,8 @@
+[
+  { "id": "r-03", "category": "read", "query": "Какой статус у заказа 2?", "expectedTool": "getOrderStatus", "expectedParams": { "orderId": 2 } },
+  { "id": "r-11", "category": "read", "query": "Покажи все товары в категории ноутбуки", "expectedTool": "getProducts", "expectedParams": { "category": "laptops" } },
+  { "id": "w-01", "category": "write", "query": "Создай заказ на товар 3 для пользователя 4", "expectedTool": "createOrder", "expectedParams": { "productId": 3, "userId": 4 } },
+  { "id": "a-01", "category": "aggregation", "query": "Сколько всего товаров в наличии?", "expectedTool": "getProductCount", "expectedParams": {} },
+  { "id": "c-01", "category": "complex_filter", "query": "Покажи товары до 20000 рублей в категории электроника", "expectedTool": "getProducts", "expectedParams": { "category": "electronics", "maxPrice": 20000 } },
+  { "id": "am-03", "category": "ambiguous", "query": "Мне нужен телефон", "expectedTool": "getProducts", "expectedParams": { "category": "electronics" } }
+]
