@@ -2,6 +2,7 @@ package ru.bengobro.electronic_shop.agent;
 
 import java.util.List;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,7 +15,8 @@ public class AgentService {
     private final ChatClient agentChatClient;
     private final AgentInvocationRecorder recorder;
 
-    public AgentService(ChatClient agentChatClient, AgentInvocationRecorder recorder) {
+    public AgentService(@Qualifier("agentChatClient") ChatClient agentChatClient,
+                        AgentInvocationRecorder recorder) {
         this.agentChatClient = agentChatClient;
         this.recorder = recorder;
     }
