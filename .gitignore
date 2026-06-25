@@ -6,10 +6,7 @@ build/
 .kotlin
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea
 *.iws
 *.iml
 *.ipr
@@ -41,3 +38,12 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### Other ###
+*.cer
+*.env
+docs/

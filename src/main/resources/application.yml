@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: electronic-shop
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  ai:
+    gigachat:
+      auth:
+        bearer:
+          api-key: ${GIGACHAT_API_KEY}
+        scope: ${GIGACHAT_SCOPE:GIGACHAT_API_PERS}
+        certs:
+          ca-certs: ${GIGACHAT_CA_BUNDLE_PATH}
+      chat:
+        options:
+          model: GigaChat
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always   # показывать компоненты (db, ping и т.п.)
+
+evaluation:
+  advisor:
+    enabled: true
+    max-attempts: 2
