@@ -53,17 +53,17 @@ class ExperimentRunner {
                 .collect(Collectors.toMap(GoldenCase::id, GoldenCase::category));
 
         log.info("Running baseline over {} cases", cases.size());
-        resetDatabase();
         List<EvaluationResult> baseline = new ArrayList<>();
         for (GoldenCase c : cases) {
+            resetDatabase();
             baseline.add(advisor.runOnce(c.query(), c.id(), c.expectedTool(), c.expectedParams()));
         }
 
         log.info("Running with-advisor over {} cases", cases.size());
-        resetDatabase();
         List<EvaluationResult> withAdvisor = new ArrayList<>();
         int totalAttempts = 0;
         for (GoldenCase c : cases) {
+            resetDatabase();
             RetryOutcome outcome = advisor.runWithRetry(c.query(), c.id(), c.expectedTool(), c.expectedParams());
             withAdvisor.add(outcome.result());
             totalAttempts += outcome.attempts();
